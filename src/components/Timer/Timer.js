@@ -1,13 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useTimer } from 'react-timer-hook';
 import './Timer.scss';
 
-const Timer = () => {
+const Timer = ({ timerMinutes }) => {
+
+  const toTimestamp = (timerMinutes) => {
+    let time = new Date();
+    return time.setMinutes(time.getMinutes() + timerMinutes);
+  }
+
+  const restartTimer = () => {
+    restart(toTimestamp(timerMinutes));
+    setTimeout(() => {
+      pause();
+    }, 100)
+  }
+
+  const getMinutes = () => {
+    return minutes >= 10 ? minutes : '0' + minutes; 
+  }
+
+  const getSeconds = () => {
+    return seconds >= 10 ? seconds : '0' + seconds; 
+  }
+
+  let expiryTimestamp = toTimestamp(timerMinutes);
+
+  const {
+    seconds,
+    minutes,
+    isRunning,
+    pause,
+    resume,
+    restart,
+  } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+
+  useEffect(() => {
+    pause()
+  }, []);
+  
   return (
-    <div class="timer">
-      <h2>25:00</h2>
-      <div class="buttons-wrapper">
-        <button><i class="fas fa-play"></i></button>
-        <button><i class="fas fa-undo-alt"></i></button>
+    <div className="timer">
+      <h2>{getMinutes()}:{getSeconds()}</h2>
+      <div className="buttons-wrapper">
+        {isRunning ? (
+          <button onClick={pause}><i className="fas fa-pause"></i></button>
+        ) : (
+          <button onClick={resume}><i className="fas fa-play"></i></button>
+        )}
+        <button onClick={() => { restartTimer() }}><i className="fas fa-undo-alt"></i></button>
       </div>
     </div>
   )
