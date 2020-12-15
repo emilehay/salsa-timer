@@ -1,10 +1,11 @@
 import React from 'react'
+import ButtonGroup from './../Button-group/Button-group';
 import './Navbar.scss';
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="logo">Salsa Timer</div>
+      <ButtonGroup />
       <div className="navbar-buttons">
         <button><i className="fas fa-cog"></i></button>
       </div>
