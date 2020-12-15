@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useTimer } from 'react-timer-hook';
 import './Timer.scss';
 
-const Timer = ({ timerMinutes }) => {
+const Timer = ({ goToNextTimer, timerMinutes }) => {
 
   const toTimestamp = (timerMinutes) => {
     let time = new Date();
@@ -33,7 +33,7 @@ const Timer = ({ timerMinutes }) => {
     pause,
     resume,
     restart,
-  } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+  } = useTimer({ expiryTimestamp, onExpire: () => { goToNextTimer() }});
 
   //Stop timer from running automatically when the page loads
   useEffect(() => {

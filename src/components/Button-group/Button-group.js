@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Button-group.scss';
 
-const ButtonGroup = ({ setActiveTimer }) => {
+const ButtonGroup = ({ activeTimer, setActiveTimer }) => {
 
   const [timerItems, setTimerItems] = useState(["Pomodoro", "Short rest", "Long rest"]);
 
@@ -9,7 +9,10 @@ const ButtonGroup = ({ setActiveTimer }) => {
     <div className="button-group">
       {
         timerItems.map((timerItem, index) => (
-          <button onClick={() => { setActiveTimer(index) }}>{timerItem}</button>
+          <button
+            className={index === activeTimer && 'active'}
+            onClick={() => { setActiveTimer(index) }}
+          >{timerItem}</button>
         ))
       }
     </div>
