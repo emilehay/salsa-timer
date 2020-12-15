@@ -35,9 +35,18 @@ const Timer = ({ timerMinutes }) => {
     restart,
   } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
 
+  //Stop timer from running automatically when the page loads
   useEffect(() => {
     pause()
   }, []);
+
+  //When the timerMinutes changes, reset the timer
+  useEffect(() => {
+    restart(toTimestamp(timerMinutes));
+    setTimeout(() => {
+      pause();
+    }, 100)
+  }, [timerMinutes])
   
   return (
     <div className="timer">

@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Button-group.scss';
 
-const ButtonGroup = () => {
+const ButtonGroup = ({ setActiveTimer }) => {
+
+  const [timerItems, setTimerItems] = useState(["Pomodoro", "Short rest", "Long rest"]);
+
   return (
     <div className="button-group">
-      <button>Pomodoro</button>
-      <button>Short rest</button>
-      <button>Long rest</button>
+      {
+        timerItems.map((timerItem, index) => (
+          <button onClick={() => { setActiveTimer(index) }}>{timerItem}</button>
+        ))
+      }
     </div>
   )
 }

@@ -2,10 +2,11 @@ import React from 'react'
 import ButtonGroup from './../Button-group/Button-group';
 import './Navbar.scss';
 
-const Navbar = () => {
+const Navbar = ({ activeTimer, setActiveTimer }) => {
+
   return (
     <div className="navbar">
-      <ButtonGroup />
+      <ButtonGroup activeTimer={activeTimer} setActiveTimer={setActiveTimer} />
       <div className="navbar-buttons">
         <button><i className="fas fa-cog"></i></button>
       </div>
