@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useTimer } from 'react-timer-hook';
 import './Timer.scss';
 
-const Timer = ({ goToNextTimer, timerMinutes }) => {
+const Timer = ({ activeTimer, goToNextTimer, timerMinutes }) => {
 
   const toTimestamp = (timerMinutes) => {
     let time = new Date();
@@ -38,6 +38,7 @@ const Timer = ({ goToNextTimer, timerMinutes }) => {
   //Stop timer from running automatically when the page loads
   useEffect(() => {
     pause()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //When the timerMinutes changes, reset the timer
@@ -46,7 +47,8 @@ const Timer = ({ goToNextTimer, timerMinutes }) => {
     setTimeout(() => {
       pause();
     }, 100)
-  }, [timerMinutes])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTimer, timerMinutes])
   
   return (
     <div className="timer">

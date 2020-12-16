@@ -13,17 +13,17 @@ const OptionsPopup = ({ clickOffPopup, optionsPopupOpen , setTimerTimes, timerTi
       <div className="popup-body">
         <h3>Salsa Timer</h3>
         <form className="options-fields">
-          <div class="row">
-            <div class="col">
-              <label for='0'>Pomodoro</label>
+          <div className="row">
+            <div className="col">
+              <label htmlFor='0'>Pomodoro</label>
               <input type='number' name='0' onChange={onTimerChange} value={timerTimes[0]}></input>
             </div>
-            <div class="col">
-              <label for='1'>Short rest</label>
+            <div className="col">
+              <label htmlFor='1'>Short rest</label>
               <input type='number' name='1' onChange={onTimerChange} value={timerTimes[1]}></input>
             </div>
-            <div class="col">
-              <label for='2'>Long rest</label>
+            <div className="col">
+              <label htmlFor='2'>Long rest</label>
               <input type='number' name='2' onChange={onTimerChange} value={timerTimes[2]}></input>
             </div>
           </div>
