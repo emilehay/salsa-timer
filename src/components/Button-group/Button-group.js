@@ -10,7 +10,8 @@ const ButtonGroup = ({ activeTimer, setActiveTimer }) => {
       {
         timerItems.map((timerItem, index) => (
           <button
-            className={index === activeTimer && 'active'}
+            className={index === activeTimer ? 'active' : undefined}
+            key={index}
             onClick={() => { setActiveTimer(index) }}
           >{timerItem}</button>
         ))
