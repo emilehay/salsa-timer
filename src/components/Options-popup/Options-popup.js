@@ -3,9 +3,9 @@ import './Options-popup.scss';
 
 const OptionsPopup = ({ clickOffPopup, optionsPopupOpen , setTimerTimes, timerTimes }) => {
 
-  const onChange = e => setTimerTimes({
+  const onTimerChange = e => setTimerTimes({
     ...timerTimes,
-    [e.target.name]: Number.parseInt(e.target.value)
+    [e.target.name]: Number.parseInt(e.target.value)  
   });
 
   return (
@@ -16,15 +16,15 @@ const OptionsPopup = ({ clickOffPopup, optionsPopupOpen , setTimerTimes, timerTi
           <div class="row">
             <div class="col">
               <label for='0'>Pomodoro</label>
-              <input type='number' name='0' onChange={onChange} value={timerTimes[0]}></input>
+              <input type='number' name='0' onChange={onTimerChange} value={timerTimes[0]}></input>
             </div>
             <div class="col">
               <label for='1'>Short rest</label>
-              <input type='number' name='1' onChange={onChange} value={timerTimes[1]}></input>
+              <input type='number' name='1' onChange={onTimerChange} value={timerTimes[1]}></input>
             </div>
             <div class="col">
               <label for='2'>Long rest</label>
-              <input type='number' name='2' onChange={onChange} value={timerTimes[2]}></input>
+              <input type='number' name='2' onChange={onTimerChange} value={timerTimes[2]}></input>
             </div>
           </div>
         </form>
