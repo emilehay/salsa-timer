@@ -8,7 +8,7 @@ import Timer from './components/Timer/Timer'
 function App() {
 
   const [activeTimer, setActiveTimer] = useState(0)
-  const [timerTimes, setTimerTimes] = useState([25, 5, 15])
+  const [timerTimes, setTimerTimes] = useState([25, 5, 2])
   const [pomodoroIndex, setPomodoroIndex] = useState(0)
   const [pomodoroOrder, setPomodoroOrder] = useState([0, 1, 0, 1, 0, 1, 0, 2])
   const [optionsPopupOpen, setOptionsPopupOpen] = useState(false)
@@ -17,15 +17,18 @@ function App() {
 
   useEffect(() => {
     setActiveTimer(pomodoroOrder[pomodoroIndex]);
-    setProgressPercentage(((pomodoroIndex + 1) / pomodoroOrder.length) * 100);
+    setProgressPercentage((pomodoroIndex / pomodoroOrder.length) * 100);
   }, [pomodoroOrder, pomodoroIndex])
 
   const goToNextTimer = () => {
     if(pomodoroIndex < pomodoroOrder.length - 1){
       setPomodoroIndex(pomodoroIndex + 1)
     } else {
-      setPomodoroIndex(0);
       setCompletedCount(completedCount + 1);
+      setProgressPercentage(100);
+      setTimeout(() => {
+        setPomodoroIndex(0);
+      }, 1000);
     }
   }
 

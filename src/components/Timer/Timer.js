@@ -6,7 +6,7 @@ const Timer = ({ activeTimer, goToNextTimer, timerMinutes }) => {
 
   const toTimestamp = (timerMinutes) => {
     let time = new Date();
-    return time.setMinutes(time.getMinutes() + timerMinutes);
+    return time.setSeconds(time.getSeconds() + timerMinutes);
   }
 
   const restartTimer = () => {
