@@ -8,7 +8,7 @@ import Timer from './components/Timer/Timer'
 function App() {
 
   const [activeTimer, setActiveTimer] = useState(0)
-  const [timerTimes, setTimerTimes] = useState([25, 5, 2])
+  const [timerTimes, setTimerTimes] = useState([25, 5, 15])
   const [pomodoroIndex, setPomodoroIndex] = useState(0)
   const [pomodoroOrder, setPomodoroOrder] = useState([0, 1, 0, 1, 0, 1, 0, 2])
   const [optionsPopupOpen, setOptionsPopupOpen] = useState(false)
